@@ -1,14 +1,14 @@
 $(function () {
   var now = dayjs().format('dddd, MMMM D')
-  var time = dayjs().format('h:m')
   var timeBlock = $('.time-block')
   
+   // Shows current date in header
+   $('#currentDay').append(now)
   
-  // Saves message upon clicking save button and stores it locally
-  $('.saveBtn').on('click', function () {
+   // Saves message upon clicking save button and stores it locally
+   $('.saveBtn').on('click', function () {
     var saveTime = parseInt($(this).parent().attr("id").split("-")[1])
     var message = $(this).siblings(".description").val()
-    console.log(saveTime);
     localStorage.setItem(saveTime, message)
   })
 
@@ -17,9 +17,6 @@ $(function () {
     var timeBlock = $(this)
     var blockHour = parseInt(timeBlock.attr('id').split("-")[1])
     var currentTime = parseInt(dayjs().hour())
-
-    console.log(blockHour, currentTime);
-    
     var timeClass
     if (blockHour === currentTime) {
       timeClass = 'present'
@@ -28,17 +25,18 @@ $(function () {
     } else {
       timeClass = 'future'
     }
-
     timeBlock.addClass(timeClass)
     
   })
+  
+  // Gets input values from local storage and adds them into the corresponding textarea element
+  for (var i = 9; i < 19; i++) {
+    var inputVal = localStorage.getItem(i) 
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-
-
-  // Shows current date in header
-  $('#currentDay').append(now)
+    var descriptHour = $('body')
+    
+    $("#hour-"+i).children(".description").val(inputVal)
+  }
+  
+  
 });

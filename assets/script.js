@@ -1,8 +1,3 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-
 $(function () {
   var now = dayjs().format('dddd, MMMM D')
   var time = dayjs().format('h:m')
@@ -43,7 +38,7 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
 
-  
+
   // Shows current date in header
   $('#currentDay').append(now)
 });

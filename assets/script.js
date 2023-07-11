@@ -31,10 +31,7 @@ $(function () {
   
   // Gets input values from local storage and adds them into the corresponding textarea element
   for (var i = 9; i < 19; i++) {
-    var inputVal = localStorage.getItem(i) 
-
-    var descriptHour = $('body')
-    
+    var inputVal = localStorage.getItem(i)   
     $("#hour-"+i).children(".description").val(inputVal)
   }
   
